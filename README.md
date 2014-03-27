@@ -1,4 +1,4 @@
-pack.js
+# pack.js
 
 Numerical packing algorithm for Javascript
 
