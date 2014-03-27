@@ -1,0 +1,1 @@
+pack.js uses a numerical packing algorithm
