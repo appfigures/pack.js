@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>Pack.js by appFigures - Numerical packing algorithm for Javascript</title>
+    </head>
+    <body>
+        <div>
+        <button onclick="packIt()">Pack</button>
+        <button onclick="packIt(true)">Pack Async</button>
+    </div>
+        <canvas id="canvas" width="1000" height="1000"></canvas>
+
+        <script src="pack.js"></script>
+        <script>
+            var packer = new pack.Packer(),
+                object, magnet, canvas = document.getElementById('canvas');
+
+            times(60, function () {
+                packer.addRect(random(400, 800), random(400, 800) - 400, random(10, 50), random(10, 50));
+            });
+
+            object = packer.addRect(550, 200 - 100, 200, 200);
+            object.mass = 100000;
+
+            magnet = packer.addMagnet(600, 200);
+
+            render();
+
+            function random(start, end, floating) {
+                var num = Math.random() * (end - start) + start;
+                if (!floating) num = Math.round(num);
+                return num;
+            }
+            function times(n, fn) {
+                var i;
+                for (i = 0; i < n; ++i) fn();
+            }
+
+            function packIt(async) {
+                var duration = packer.pack({
+                    async: async,
+                    duration: 1.5,
+                    progress: render,
+                    done: function (duration) {
+                        console.log('time ' + duration + 'ms');
+                        render();
+                    }
+                });
+            }
+
+            function render() {
+                packer.render(canvas, {
+                    scale: 1
+                });
+            }
+        </script>
+    </body>
+</html>
