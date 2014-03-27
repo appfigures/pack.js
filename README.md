@@ -7,4 +7,4 @@ Pack.js is a shape packing library for Javascript that uses a numerical packing 
 
 # How does it work
 
-We use a simple verlet-based physics simulation under the hood. It uses gravity to cluster objects around a specific point and collision detection to prevent shapes from intersecting.
+We use a simple verlet-based physics simulation under the hood. Gravity wells can be used to cluster objects around a specific point and collision detection to prevent shapes from intersecting.
